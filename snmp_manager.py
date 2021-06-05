@@ -3,6 +3,7 @@ from scapy.all import *
 from caesar_cipher import CaesarCipher
 from globals import PORT, TRAPID, SHIFT_CIPHER
 
+# This class manage the SNMP connection.
 class SNMPManager:
     def __init__(self, ip_local, ip_destination, community):
         self.ip_local = ip_local

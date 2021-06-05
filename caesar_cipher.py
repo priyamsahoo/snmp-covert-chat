@@ -1,5 +1,6 @@
 from globals import ALPHABET
 
+# This class encrypts and decrypts the messages.
 class CaesarCipher:
     def __init__(self, shift):
         self.alphabet = ALPHABET
