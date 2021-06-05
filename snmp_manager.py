@@ -1,9 +1,7 @@
 from scapy.all import *
-from caesar_cipher import CaesarCipher
 
-PORT = 162                  # Port to use for communication.
-TRAPID = 14452              # ID of the SNMP trap.
-SHIFT_CIPHER = 3            # Number of shifts for encryption/decryption.
+from caesar_cipher import CaesarCipher
+from globals import PORT, TRAPID, SHIFT_CIPHER
 
 class SNMPManager:
     def __init__(self, ip_local, ip_destination, community):

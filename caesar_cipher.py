@@ -1,6 +1,4 @@
-import string
-
-ALPHABET = string.printable # Alphabet to use in the chat.
+from globals import ALPHABET
 
 class CaesarCipher:
     def __init__(self, shift):
