@@ -51,17 +51,17 @@ class SNMPManager:
                     b = l[i]
                     a = a + b
             decryptedText = self.cipher.decrypt(message)
-            self.window.chatContainer.configure(state='normal')
+            self.window.text_widget.configure(state='normal')
             if decryptedText == "q":
                 decryptedText = "- Covert has disconnected -\n"
-                self.window.chatContainer.insert(END, decryptedText, "bold")
+                self.window.text_widget.insert(END, decryptedText, "bold")
             else:
-                self.window.chatContainer.insert(END, " > Covert: ", "bold")
-                self.window.chatContainer.insert(END, decryptedText)
+                self.window.text_widget.insert(END, " > Covert: ", "bold")
+                self.window.text_widget.insert(END, decryptedText)
                 decryptedText = "Covert: " + decryptedText.strip()
             print ("* " + decryptedText)
-            self.window.chatContainer.configure(state=DISABLED)
-            self.window.chatContainer.see(END)
+            self.window.text_widget.configure(state=DISABLED)
+            self.window.text_widget.see(END)
         return sndr
 
     # This func is called when a new packet is recieved.
