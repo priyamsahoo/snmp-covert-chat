@@ -9,7 +9,7 @@ class SNMPManager:
         self.ip_local = ip_local
         self.ip_destination = ip_destination
         self.community = community
-        self.master = None
+        self.window = None
         self.cipher = CaesarCipher(SHIFT_CIPHER)
 
     # This func converts a text in a valid OID.
@@ -51,17 +51,17 @@ class SNMPManager:
                     b = l[i]
                     a = a + b
             decryptedText = self.cipher.decrypt(message)
-            self.master.chatContainer.configure(state='normal')
+            self.window.chatContainer.configure(state='normal')
             if decryptedText == "q":
                 decryptedText = "- Covert has disconnected -\n"
-                self.master.chatContainer.insert(END, decryptedText, "bold")
+                self.window.chatContainer.insert(END, decryptedText, "bold")
             else:
-                self.master.chatContainer.insert(END, " > Covert: ", "bold")
-                self.master.chatContainer.insert(END, decryptedText)
+                self.window.chatContainer.insert(END, " > Covert: ", "bold")
+                self.window.chatContainer.insert(END, decryptedText)
                 decryptedText = "Covert: " + decryptedText.strip()
             print ("* " + decryptedText)
-            self.master.chatContainer.configure(state=DISABLED)
-            self.master.chatContainer.see(END)
+            self.window.chatContainer.configure(state=DISABLED)
+            self.window.chatContainer.see(END)
         return sndr
 
     # This func is called when a new packet is recieved.

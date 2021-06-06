@@ -24,7 +24,6 @@ class ChatApplication:
         # self.window = Tk()
 
         self.window = window
-        # master.resizable(width=False, height=False)
         self.window.protocol("WM_DELETE_WINDOW", self.closeConnection)
         self.snmpConn = snmpConn
 

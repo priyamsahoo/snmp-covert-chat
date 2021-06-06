@@ -46,7 +46,7 @@ if __name__ == "__main__":
     root = Tk()
     # chatInterface = ChatGUI(root, snmpConn)
     chatInterface = ChatApplication(root, snmpConn)
-    snmpConn.master = chatInterface
+    snmpConn.window = chatInterface
     
     # Create the thread that will recieve the SNMP messages.
     thread = Thread(target = snmpConn.receiveMsg)
