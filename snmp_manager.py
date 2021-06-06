@@ -65,7 +65,7 @@ class SNMPManager:
         return sndr
 
     # This func is called when a new packet is recieved.
-    def recieveMsg(self):
+    def receiveMsg(self):
         filterstr = "udp and ip src " + self.ip_destination +  " and port " +str(PORT)+ " and ip dst " + self.ip_local
         sniff(prn=self.snmp_values(), filter=filterstr, store=0, count=0)
         return

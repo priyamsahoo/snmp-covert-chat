@@ -7,7 +7,8 @@ import argparse
 from tkinter import *
 
 from snmp_manager import SNMPManager
-from gui import ChatGUI
+# from gui import ChatGUI
+from new_gui import ChatApplication
 
 ## MAIN
 if __name__ == "__main__":
@@ -43,11 +44,12 @@ if __name__ == "__main__":
     # Set the two needed objects.
     snmpConn = SNMPManager(ip_local, ip_destination, community)
     root = Tk()
-    chatInterface = ChatGUI(root, snmpConn)
+    # chatInterface = ChatGUI(root, snmpConn)
+    chatInterface = ChatApplication(root, snmpConn)
     snmpConn.master = chatInterface
     
     # Create the thread that will recieve the SNMP messages.
-    thread = Thread(target = snmpConn.recieveMsg)
+    thread = Thread(target = snmpConn.receiveMsg)
     thread.daemon = True
     thread.start()
     
