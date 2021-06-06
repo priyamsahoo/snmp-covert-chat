@@ -57,15 +57,16 @@ class SNMPManager:
                 decryptedText = "- Covert has disconnected -\n"
                 self.window.text_widget.insert(END, decryptedText, "bold")
             else:
-                self.window.text_widget.insert(END, " > Covert: ", "bold")
+                self.window.text_widget.insert(END, "Covert: ", "bold")
                 self.window.text_widget.insert(END, decryptedText)
+                self.window.text_widget.insert(END, "\n\n")
                 decryptedText = "Covert: " + decryptedText.strip()
             print ("* " + decryptedText)
             self.window.text_widget.configure(state=DISABLED)
             self.window.text_widget.see(END)
         return sndr
 
-    # This func is called when a new packet is recieved.
+    # This func is called when a new packet is received.
     def receiveMsg(self):
         filterstr = "udp and ip src " + self.ip_destination +  " and port " +str(PORT)+ " and ip dst " + self.ip_local
         sniff(prn=self.snmp_values(), filter=filterstr, store=0, count=0)
