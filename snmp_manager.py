@@ -1,4 +1,5 @@
 from scapy.all import *
+from tkinter import *
 
 from caesar_cipher import CaesarCipher
 from globals import PORT, TRAPID, SHIFT_CIPHER
