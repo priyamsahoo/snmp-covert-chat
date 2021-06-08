@@ -54,7 +54,7 @@ class SNMPManager:
             decryptedText = self.cipher.decrypt(message)
             self.window.text_widget.configure(state='normal')
             if decryptedText == "q":
-                decryptedText = "- Covert has disconnected -\n"
+                decryptedText = "- Covert has disconnected -\n\n"
                 self.window.text_widget.insert(END, decryptedText, "bold")
             else:
                 self.window.text_widget.insert(END, "Covert: ", "bold")
