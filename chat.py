@@ -7,7 +7,7 @@ import argparse
 from tkinter import *
 
 from snmp_manager import SNMPManager
-# from gui import ChatGUI
+from my_parser import MyParser
 from new_gui import ChatApplication
 
 ## MAIN
@@ -23,20 +23,26 @@ if __name__ == "__main__":
         	sys.exit(1)
 
     # Check needed arguments.
-    parser = argparse.ArgumentParser(description='This script has been developed as part of a practical work on Network Security I, Master\'s degree in Computer Security at the UBA. It is for academic purposes only.')
+    # parser = argparse.ArgumentParser(description='This script has been developed as part of a practical work on Covert Communication leveraging SNMP services')
+    parser = MyParser(description='__ This script has been developed as part of a practical work on Covert Communication leveraging SNMP services __')
     parser._action_groups.pop()
+    
     required = parser.add_argument_group('Required arguments')
     optional = parser.add_argument_group('Optional arguments')
-    required.add_argument('-l', action="store", dest='IP_LOCAL', help='source IP address', required=True)
+    
+    required.add_argument('-s', action="store", dest='IP_LOCAL', help='source IP address', required=True)
     required.add_argument('-d', action="store", dest='IP_DESTINATION', help='IP address with which you are going to communicate', required=True)
-    optional.add_argument('-c', action="store",dest='COMMUNITY', help='SNMP community value')
+    
+    optional.add_argument('-c', action="store", dest='COMMUNITY', help='SNMP community value')
+    
     args = parser.parse_args()
+
     args = vars(args) # Convert the arguments in dictionary format for easy handling.
     
     # Store parameters in variables.
     ip_destination = args['IP_DESTINATION']
     ip_local = args['IP_LOCAL']
-    community = "UBAMSI"
+    community = "HELLOWORLD"
     if args['COMMUNITY'] != None:
         community = args['COMMUNITY']
     print("[-] Covert Channel Chat has started.")
