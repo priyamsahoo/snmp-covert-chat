@@ -48,10 +48,8 @@ if __name__ == "__main__":
     chatInterface = ChatApplication(root, snmpConn)
     snmpConn.window = chatInterface
     
-    # Create the thread that will recieve the SNMP messages.
-    thread = Thread(target = snmpConn.receiveMsg)
-    thread.daemon = True
-    thread.start()
+    # Start async task to receive messages 
+    snmpConn.receiveMsg()
     
     # GUI loop.
     root.mainloop()

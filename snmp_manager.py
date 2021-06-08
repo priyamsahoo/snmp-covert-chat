@@ -69,5 +69,5 @@ class SNMPManager:
     # This func is called when a new packet is received.
     def receiveMsg(self):
         filterstr = "udp and ip src " + self.ip_destination +  " and port " +str(PORT)+ " and ip dst " + self.ip_local
-        sniff(prn=self.snmp_values(), filter=filterstr, store=0, count=0)
-        return
+        t = AsyncSniffer(prn=self.snmp_values(), filter=filterstr, store=0)
+        t.start()
